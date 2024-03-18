@@ -1,10 +1,9 @@
 import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
-import { MdDelete } from 'react-icons/md';
 import css from './Contact.module.css';
 
-export default function Contact({ name, number, id, onDelete }) {
+export default function Contact({ name, number }) {
   return (
     <div className={css.container}>
       <div className={css.phoneContainer}>
@@ -24,14 +23,7 @@ export default function Contact({ name, number, id, onDelete }) {
         </a>
       </div>
       <hr className={css.line} />
-      <button
-        className={css.btn}
-        onClick={() => {
-          onDelete(id);
-        }}
-      >
-        Delete
-      </button>
+      <button className={css.btn}>Delete</button>
     </div>
   );
 }
