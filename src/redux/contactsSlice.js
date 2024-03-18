@@ -6,8 +6,18 @@ const slice = createSlice({
     items: [],
   },
   reducers: {
-    addContact(state, action) {
-      state.items.push(action.payload);
+    addContact: {
+      reducer: (state, action) => {
+        state.items.push(action.payload);
+      },
+      prepare: value => {
+        return {
+          payload: {
+            id: Date.now(),
+            ...value,
+          },
+        };
+      },
     },
     deleteContact(state, action) {},
   },

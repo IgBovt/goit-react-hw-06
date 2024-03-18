@@ -4,6 +4,8 @@ import css from './ContactList.module.css';
 
 export default function ContactList() {
   const contacts = useSelector(state => state.contacts.items);
+  console.log(contacts);
+
   return contacts.length < 1 ? (
     <p className={css.text}>We haven`t found any contacts</p>
   ) : (

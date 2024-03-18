@@ -21,7 +21,6 @@ const initialValues = { name: '', number: '' };
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  // const contacts = useSelector(state => state.contacts.items);
 
   const nameID = useId();
   const numberID = useId();
