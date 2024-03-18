@@ -2,9 +2,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
+import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { addContact } from '../../redux/contactsSlice';
+import { selectContacts } from '../../redux/contactsSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from './ContactForm.module.css';
+
+const notify = () => toast('Sorry, you already have same contact');
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,13 +27,15 @@ const initialValues = { name: '', number: '' };
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const nameID = useId();
   const numberID = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
-    actions.resetForm();
+    contacts.find(contact => contact.name === values.name)
+      ? notify()
+      : (dispatch(addContact(values)), actions.resetForm());
   };
 
   return (

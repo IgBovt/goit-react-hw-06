@@ -3,8 +3,7 @@ import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactForm from '../ContactForm/ContactForm';
 import css from './App.module.css';
-// import data from '../../data/contacts.json';
-// import { nanoid } from 'nanoid';
+import { ToastContainer } from 'react-toastify';
 
 export default function App() {
   return (
@@ -13,6 +12,7 @@ export default function App() {
       <ContactForm />
       <SearchBox />
       <ContactList />
+      <ToastContainer />
     </div>
   );
 }
